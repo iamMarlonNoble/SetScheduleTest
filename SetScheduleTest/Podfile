@@ -4,6 +4,7 @@ target 'SetScheduleTest' do
   use_frameworks!
   
   pod 'LBTATools'
+  pod 'SVProgressHUD', '~> 2.2.5'
 
   # Pods for SetScheduleTest
 

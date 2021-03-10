@@ -40,13 +40,19 @@ class SearchVCViewModelDefault: SearchControllerViewModel {
       repeats: false
     )
   }
-  
+}
+
+// MARK: - Private Methods
+
+private extension SearchVCViewModelDefault {
   @objc
   private func fireRequest() {
+    isLoadingHandler?(true)
     eventService.searchEvent(
       coordinate: .init(latitude: 0, longitude: 0),
       keyword: keyword,
       range: range) { [weak self] (events, error) in
+      self?.isLoadingHandler?(false)
       self?.foundEventsHandler(events: events)
     }
   }

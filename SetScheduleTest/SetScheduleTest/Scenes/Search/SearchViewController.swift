@@ -5,7 +5,7 @@
 //  Created by Marlon on 3/10/21.
 //
 
-import UIKit
+import SVProgressHUD
 
 class SearchViewController: UITableViewController {
   
@@ -44,6 +44,14 @@ private extension SearchViewController {
   func setupViewModel() {
     viewModel.didUpdateEvents = { [weak self] in
       self?.tableView.reloadData()
+    }
+    
+    viewModel.isLoadingHandler = { isLoading in
+      if isLoading {
+        SVProgressHUD.show()
+      } else {
+        SVProgressHUD.dismiss()
+      }
     }
   }
   
