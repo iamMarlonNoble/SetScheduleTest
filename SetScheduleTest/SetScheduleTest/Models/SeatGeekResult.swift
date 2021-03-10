@@ -30,7 +30,7 @@ struct SeatGeekEvent {
 
 extension SeatGeekEvent: Event {
   var category: String {
-    type
+    type.replacingOccurrences(of: "_", with: " ").capitalized
   }
   
   var date: String? {
