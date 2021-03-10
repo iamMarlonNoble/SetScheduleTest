@@ -7,6 +7,7 @@
 
 import Foundation
 
-enum Host {
-  case seatGeek
+enum Host: Int {
+  case seatGeek = 0
+  case predictHQ = 1
 }

@@ -11,13 +11,20 @@ class SettingsViewController: UIViewController {
   
   var didSaveSettings: (() -> Void)?
   
+  /// Range field
   private let rangeLabel = UILabel(text: "Distance to search (mi):", font: .systemFont(ofSize: 14), textColor: .secondaryLabel)
   private let rangeTextField = UITextField()
   private let rangeStack = UIStackView()
   
+  /// Location field
   private let locationLabel = UILabel(text: "Your current location:", font: .systemFont(ofSize: 14), textColor: .secondaryLabel)
   private let locationLabelValue = UILabel(font: .systemFont(ofSize: 17))
   private let locationStack = UIStackView()
+  
+  /// Host field
+  private let hostLabel = UILabel(text: "Host API:", font: .systemFont(ofSize: 14), textColor: .secondaryLabel)
+  private let hostSegmentedControl = UISegmentedControl(items: ["SeatGeek", "PredictHQ"])
+  private let hostStack = UIStackView()
   
   private let mainStack = UIStackView()
   
@@ -45,6 +52,7 @@ private extension SettingsViewController {
     
     setupDistanceUI()
     setupLocationUI()
+    setupHostUI()
     setupRightBarButtonItem()
     setupInitialValues()
     setupLocationService()
@@ -53,6 +61,8 @@ private extension SettingsViewController {
   func setupInitialValues() {
     let range = UserDefaults.standard.double(forKey: "range")
     rangeTextField.text = "\(range)"
+    
+    hostSegmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "host")
   }
   
   func setupLocationService() {
@@ -95,7 +105,7 @@ private extension SettingsViewController {
     
     mainStack.addArrangedSubview(locationStack)
     mainStack.axis = .vertical
-    mainStack.spacing = 30
+    mainStack.spacing = 40
     
     view.addSubview(mainStack)
     
@@ -105,8 +115,19 @@ private extension SettingsViewController {
       leading: safeArea.leadingAnchor,
       bottom: nil,
       trailing: safeArea.trailingAnchor,
-      padding: .init(top: 20, left: 15, bottom: 0, right: 15)
+      padding: .init(top: 40, left: 15, bottom: 0, right: 15)
     )
+  }
+  
+  func setupHostUI() {
+    hostStack.stack(
+      hostLabel, hostSegmentedControl,
+      spacing: 5,
+      alignment: .fill,
+      distribution: .equalSpacing
+    )
+    
+    mainStack.addArrangedSubview(hostStack)
   }
 }
 
@@ -118,6 +139,8 @@ private extension SettingsViewController {
     if let range = rangeTextField.text, let doubleRange = Double(range) {
       UserDefaults.standard.setValue(doubleRange, forKey: "range")
     }
+    
+    UserDefaults.standard.setValue(hostSegmentedControl.selectedSegmentIndex, forKey: "host")
     
     didSaveSettings?()
     
