@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol SearchControllerViewModel: AnyObject {
+  var isLoadingHandler: ((Bool) -> Void)? { get set }
+  var eventCellViewModels: [EventCellViewModel] { get }
+  var didUpdateEvents: (() -> Void)? { get set }
+}
