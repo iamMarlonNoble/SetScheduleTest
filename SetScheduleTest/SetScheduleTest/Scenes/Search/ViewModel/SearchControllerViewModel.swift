@@ -12,3 +12,15 @@ protocol SearchControllerViewModel: AnyObject {
   var eventCellViewModels: [EventCellViewModel] { get }
   var didUpdateEvents: (() -> Void)? { get set }
 }
+
+class SearchControllerViewModelMock: SearchControllerViewModel {
+  var isLoadingHandler: ((Bool) -> Void)?
+  
+  var eventCellViewModels: [EventCellViewModel] = [
+    EventCellViewModelMock(tag: 1),
+    EventCellViewModelMock(tag: 2),
+    EventCellViewModelMock(tag: 3)
+  ]
+  
+  var didUpdateEvents: (() -> Void)?
+}

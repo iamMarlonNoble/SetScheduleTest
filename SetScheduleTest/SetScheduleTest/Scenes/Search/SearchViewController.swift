@@ -13,6 +13,8 @@ class SearchViewController: UITableViewController {
 
   private let searchController = UISearchController(searchResultsController: nil)
   
+  private let cellId = "cellId"
+  
   // TODO: - Call this from UserDefaults
   private var distance: Double = 10000
   
@@ -33,6 +35,8 @@ class SearchViewController: UITableViewController {
 
 private extension SearchViewController {
   func setup() {
+    tableView.register(EventCell.self, forCellReuseIdentifier: cellId)
+    
     setupSearchController()
     setupViewModel()
   }
@@ -64,7 +68,13 @@ extension SearchViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    UITableViewCell()
+    guard let eventCell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? EventCell else {
+      fatalError("Can't create cell")
+    }
+    
+    eventCell.viewModel = viewModel.eventCellViewModels[indexPath.row]
+    
+    return eventCell
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
