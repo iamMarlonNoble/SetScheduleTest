@@ -1,0 +1,19 @@
+platform :ios, '10.0'
+
+target 'SetScheduleTest' do
+  use_frameworks!
+  
+  pod 'LBTATools'
+
+  # Pods for SetScheduleTest
+
+  target 'SetScheduleTestTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'SetScheduleTestUITests' do
+    # Pods for testing
+  end
+
+end
