@@ -5,4 +5,8 @@
 //  Created by Marlon on 3/10/21.
 //
 
-import Foundation
+import UIKit
+
+class SettingsViewController: UIViewController {
+  
+}
