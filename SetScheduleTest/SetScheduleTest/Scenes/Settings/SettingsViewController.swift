@@ -11,11 +11,22 @@ class SettingsViewController: UIViewController {
   
   var didSaveSettings: (() -> Void)?
   
-  private let rangeLabel = UILabel(text: "Distance to search (mi):")
+  private let rangeLabel = UILabel(text: "Distance to search (mi):", font: .systemFont(ofSize: 14), textColor: .secondaryLabel)
   private let rangeTextField = UITextField()
   private let rangeStack = UIStackView()
   
-  init() {
+  private let locationLabel = UILabel(text: "Your current location:", font: .systemFont(ofSize: 14), textColor: .secondaryLabel)
+  private let locationLabelValue = UILabel(font: .systemFont(ofSize: 17))
+  private let locationStack = UIStackView()
+  
+  private let mainStack = UIStackView()
+  
+  // TODO: - Add ViewModel
+  
+  let locationService: LocationService
+  
+  init(locationService: LocationService = LocationServiceDefault()) {
+    self.locationService = locationService
     super.init(nibName: nil, bundle: nil)
     setup()
   }
@@ -30,15 +41,24 @@ class SettingsViewController: UIViewController {
 private extension SettingsViewController {
   func setup() {
     title = "Settings"
+    view.backgroundColor = UIColor.systemGroupedBackground
     
-    setupUI()
+    setupDistanceUI()
+    setupLocationUI()
     setupRightBarButtonItem()
     setupInitialValues()
+    setupLocationService()
   }
   
   func setupInitialValues() {
     let range = UserDefaults.standard.double(forKey: "range")
     rangeTextField.text = "\(range)"
+  }
+  
+  func setupLocationService() {
+    locationService.didUpdateLocation = { [weak self] coordinates in
+      self?.locationLabelValue.text = "Lat: \(coordinates.latitude), Lon: \(coordinates.longitude)"
+    }
   }
   
   func setupRightBarButtonItem() {
@@ -50,9 +70,7 @@ private extension SettingsViewController {
     )
   }
   
-  func setupUI() {
-    view.backgroundColor = UIColor.systemGroupedBackground
-    
+  func setupDistanceUI() {
     rangeTextField.placeholder = "0000"
     rangeTextField.backgroundColor = .white
     rangeTextField.withHeight(30)
@@ -63,10 +81,26 @@ private extension SettingsViewController {
     rangeStack.axis = .vertical
     rangeStack.spacing = 7
     
-    view.addSubview(rangeStack)
+    mainStack.addArrangedSubview(rangeStack)
+  }
+  
+  func setupLocationUI() {
+    locationStack.stack(
+      locationLabel,
+      locationLabelValue,
+      spacing: 5,
+      alignment: .leading,
+      distribution: .equalSpacing
+    )
+    
+    mainStack.addArrangedSubview(locationStack)
+    mainStack.axis = .vertical
+    mainStack.spacing = 30
+    
+    view.addSubview(mainStack)
     
     let safeArea = view.safeAreaLayoutGuide
-    rangeStack.anchor(
+    mainStack.anchor(
       top: safeArea.topAnchor,
       leading: safeArea.leadingAnchor,
       bottom: nil,

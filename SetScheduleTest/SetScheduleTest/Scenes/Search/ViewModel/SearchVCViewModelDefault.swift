@@ -5,7 +5,7 @@
 //  Created by Marlon on 3/10/21.
 //
 
-import Foundation
+import CoreLocation
 
 class SearchVCViewModelDefault: SearchControllerViewModel {
   var isLoadingHandler: ((Bool) -> Void)?
@@ -22,8 +22,20 @@ class SearchVCViewModelDefault: SearchControllerViewModel {
   
   private var range: Double = 0
   
-  init(eventService: EventService = SeatGeekEventService()) {
+  private let locationService: LocationService
+  
+  private var coordinates: CLLocationCoordinate2D = .init(latitude: 0, longitude: 0)
+  
+  init(
+    eventService: EventService = SeatGeekEventService(),
+    locationService: LocationService = LocationServiceDefault()
+  ) {
     self.eventService = eventService
+    self.locationService = locationService
+    
+    locationService.didUpdateLocation = { [weak self] coordinates in
+      self?.coordinates = coordinates
+    }
   }
   
   func searchEvent(with keyword: String, range: Double) {
@@ -49,7 +61,7 @@ private extension SearchVCViewModelDefault {
   private func fireRequest() {
     isLoadingHandler?(true)
     eventService.searchEvent(
-      coordinate: .init(latitude: 0, longitude: 0),
+      coordinate: coordinates,
       keyword: keyword,
       range: range) { [weak self] (events, error) in
       self?.isLoadingHandler?(false)
