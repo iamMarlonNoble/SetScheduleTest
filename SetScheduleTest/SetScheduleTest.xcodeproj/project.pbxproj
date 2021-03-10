@@ -19,7 +19,8 @@
 		375F49F225F8E8EE0048FACD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375F49F125F8E8EE0048FACD /* SearchViewController.swift */; };
 		375F49F925F8E92A0048FACD /* SearchControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375F49F825F8E92A0048FACD /* SearchControllerViewModel.swift */; };
 		375F49FE25F8E93D0048FACD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375F49FD25F8E93D0048FACD /* SettingsViewController.swift */; };
-		375F4A0925F8EC810048FACD /* EventCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375F4A0825F8EC810048FACD /* EventCellViewModel.swift */; };
+		375F4A1325F8EDD70048FACD /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375F4A1225F8EDD70048FACD /* EventCell.swift */; };
+		375F4A1B25F8EDE10048FACD /* EventCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375F4A1A25F8EDE10048FACD /* EventCellViewModel.swift */; };
 		55B5DD738EB9DCA81C21AF33 /* Pods_SetScheduleTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B1498D4D2EFA0892EB4A70 /* Pods_SetScheduleTest.framework */; };
 		D31DBDB82D5619ED9587BEF3 /* Pods_SetScheduleTest_SetScheduleTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D85EA41D52FD8F57431A6393 /* Pods_SetScheduleTest_SetScheduleTestUITests.framework */; };
 /* End PBXBuildFile section */
@@ -60,7 +61,8 @@
 		375F49F125F8E8EE0048FACD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		375F49F825F8E92A0048FACD /* SearchControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchControllerViewModel.swift; sourceTree = "<group>"; };
 		375F49FD25F8E93D0048FACD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		375F4A0825F8EC810048FACD /* EventCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellViewModel.swift; sourceTree = "<group>"; };
+		375F4A1225F8EDD70048FACD /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		375F4A1A25F8EDE10048FACD /* EventCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellViewModel.swift; sourceTree = "<group>"; };
 		479B25BFDD25B6C4439867CF /* Pods-SetScheduleTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SetScheduleTestTests.release.xcconfig"; path = "Target Support Files/Pods-SetScheduleTestTests/Pods-SetScheduleTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		7A769F2E60876977B3423845 /* Pods-SetScheduleTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SetScheduleTest.release.xcconfig"; path = "Target Support Files/Pods-SetScheduleTest/Pods-SetScheduleTest.release.xcconfig"; sourceTree = "<group>"; };
 		8D9A05E62075119B02F71A28 /* Pods_SetScheduleTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SetScheduleTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 		375F49AC25F8E6630048FACD /* SetScheduleTest */ = {
 			isa = PBXGroup;
 			children = (
+				375F4A1025F8EDC40048FACD /* Cells */,
 				375F49F025F8E8CF0048FACD /* Scenes */,
 				375F49AD25F8E6630048FACD /* AppDelegate.swift */,
 				375F49AF25F8E6630048FACD /* SceneDelegate.swift */,
@@ -181,7 +184,6 @@
 			children = (
 				375F49F125F8E8EE0048FACD /* SearchViewController.swift */,
 				375F49F825F8E92A0048FACD /* SearchControllerViewModel.swift */,
-				375F4A0825F8EC810048FACD /* EventCellViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -192,6 +194,23 @@
 				375F49FD25F8E93D0048FACD /* SettingsViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		375F4A1025F8EDC40048FACD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				375F4A1125F8EDCC0048FACD /* EventCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		375F4A1125F8EDCC0048FACD /* EventCell */ = {
+			isa = PBXGroup;
+			children = (
+				375F4A1225F8EDD70048FACD /* EventCell.swift */,
+				375F4A1A25F8EDE10048FACD /* EventCellViewModel.swift */,
+			);
+			path = EventCell;
 			sourceTree = "<group>";
 		};
 		6381C14998AF1973DD88A59D /* Frameworks */ = {
@@ -443,9 +462,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				375F49B225F8E6630048FACD /* ViewController.swift in Sources */,
-				375F4A0925F8EC810048FACD /* EventCellViewModel.swift in Sources */,
 				375F49AE25F8E6630048FACD /* AppDelegate.swift in Sources */,
 				375F49F925F8E92A0048FACD /* SearchControllerViewModel.swift in Sources */,
+				375F4A1B25F8EDE10048FACD /* EventCellViewModel.swift in Sources */,
+				375F4A1325F8EDD70048FACD /* EventCell.swift in Sources */,
 				375F49F225F8E8EE0048FACD /* SearchViewController.swift in Sources */,
 				375F49B025F8E6630048FACD /* SceneDelegate.swift in Sources */,
 				375F49FE25F8E93D0048FACD /* SettingsViewController.swift in Sources */,
