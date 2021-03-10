@@ -77,7 +77,13 @@ private extension SearchVCViewModelDefault {
       let vm = EventCellViewModelDefault()
       vm.title = event.title
       vm.sub1 = "Category: \(event.category)"
-      vm.sub2 = "Venue: \(event.venue?.name ?? "") - \(event.venue?.address ?? "")"
+      
+      if let venue = event.venue {
+        vm.sub2 = "Venue: \(venue.name) - \(venue.address)"
+      } else {
+        vm.sub2 = "Venue: (Not Provided)"
+      }
+      
       vm.sub3 = "Date: \(event.date ?? "")"
       
       return vm

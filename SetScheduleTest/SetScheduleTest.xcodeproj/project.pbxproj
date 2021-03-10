@@ -28,6 +28,8 @@
 		37C1851725F902D500A80EDF /* SeatGeekEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1851625F902D500A80EDF /* SeatGeekEventService.swift */; };
 		37C1851C25F9034600A80EDF /* SeatGeekResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1851B25F9034500A80EDF /* SeatGeekResult.swift */; };
 		37C1854425F916E900A80EDF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1854325F916E900A80EDF /* LocationService.swift */; };
+		37C1854925F9220400A80EDF /* PredictHQEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1854825F9220300A80EDF /* PredictHQEventService.swift */; };
+		37C1854E25F92E7A00A80EDF /* PredictHQResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1854D25F92E7A00A80EDF /* PredictHQResult.swift */; };
 		55B5DD738EB9DCA81C21AF33 /* Pods_SetScheduleTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B1498D4D2EFA0892EB4A70 /* Pods_SetScheduleTest.framework */; };
 		D31DBDB82D5619ED9587BEF3 /* Pods_SetScheduleTest_SetScheduleTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D85EA41D52FD8F57431A6393 /* Pods_SetScheduleTest_SetScheduleTestUITests.framework */; };
 /* End PBXBuildFile section */
@@ -77,6 +79,8 @@
 		37C1851625F902D500A80EDF /* SeatGeekEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatGeekEventService.swift; sourceTree = "<group>"; };
 		37C1851B25F9034500A80EDF /* SeatGeekResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatGeekResult.swift; sourceTree = "<group>"; };
 		37C1854325F916E900A80EDF /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		37C1854825F9220300A80EDF /* PredictHQEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictHQEventService.swift; sourceTree = "<group>"; };
+		37C1854D25F92E7A00A80EDF /* PredictHQResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictHQResult.swift; sourceTree = "<group>"; };
 		479B25BFDD25B6C4439867CF /* Pods-SetScheduleTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SetScheduleTestTests.release.xcconfig"; path = "Target Support Files/Pods-SetScheduleTestTests/Pods-SetScheduleTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		7A769F2E60876977B3423845 /* Pods-SetScheduleTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SetScheduleTest.release.xcconfig"; path = "Target Support Files/Pods-SetScheduleTest/Pods-SetScheduleTest.release.xcconfig"; sourceTree = "<group>"; };
 		8D9A05E62075119B02F71A28 /* Pods_SetScheduleTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SetScheduleTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +247,7 @@
 			children = (
 				37C1850025F8F4CB00A80EDF /* EventService.swift */,
 				37C1851625F902D500A80EDF /* SeatGeekEventService.swift */,
+				37C1854825F9220300A80EDF /* PredictHQEventService.swift */,
 				37C1854325F916E900A80EDF /* LocationService.swift */,
 			);
 			path = Services;
@@ -254,6 +259,7 @@
 				37C1850C25F8F5BE00A80EDF /* Event.swift */,
 				37C1851125F8F65300A80EDF /* Host.swift */,
 				37C1851B25F9034500A80EDF /* SeatGeekResult.swift */,
+				37C1854D25F92E7A00A80EDF /* PredictHQResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -506,6 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37C1854E25F92E7A00A80EDF /* PredictHQResult.swift in Sources */,
 				37C184F825F8F1BD00A80EDF /* SearchVCViewModelDefault.swift in Sources */,
 				37C1850D25F8F5BE00A80EDF /* Event.swift in Sources */,
 				375F49B225F8E6630048FACD /* ViewController.swift in Sources */,
@@ -519,6 +526,7 @@
 				37C1851C25F9034600A80EDF /* SeatGeekResult.swift in Sources */,
 				375F49B025F8E6630048FACD /* SceneDelegate.swift in Sources */,
 				37C1850125F8F4CB00A80EDF /* EventService.swift in Sources */,
+				37C1854925F9220400A80EDF /* PredictHQEventService.swift in Sources */,
 				375F49FE25F8E93D0048FACD /* SettingsViewController.swift in Sources */,
 				37C1851725F902D500A80EDF /* SeatGeekEventService.swift in Sources */,
 			);
