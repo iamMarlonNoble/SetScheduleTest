@@ -5,6 +5,7 @@ target 'SetScheduleTest' do
   
   pod 'LBTATools'
   pod 'SVProgressHUD', '~> 2.2.5'
+  pod 'SwiftDate', '~> 5.0'
 
   # Pods for SetScheduleTest
 

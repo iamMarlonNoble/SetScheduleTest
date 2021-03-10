@@ -1,20 +1,24 @@
 PODS:
   - LBTATools (1.0.12)
   - SVProgressHUD (2.2.5)
+  - SwiftDate (5.1.0)
 
 DEPENDENCIES:
   - LBTATools
   - SVProgressHUD (~> 2.2.5)
+  - SwiftDate (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - LBTATools
     - SVProgressHUD
+    - SwiftDate
 
 SPEC CHECKSUMS:
   LBTATools: 389a901a01b9a56bea5682c40cd6e23530f40015
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
 
-PODFILE CHECKSUM: 4f4d07736f2dbd6e632296a8fb1fe3eeb62b92f5
+PODFILE CHECKSUM: 4b0e240bf68998f28009fc516f5d1c9731037b95
 
 COCOAPODS: 1.10.1
