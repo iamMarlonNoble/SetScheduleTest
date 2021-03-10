@@ -33,6 +33,12 @@ private extension SettingsViewController {
     
     setupUI()
     setupRightBarButtonItem()
+    setupInitialValues()
+  }
+  
+  func setupInitialValues() {
+    let range = UserDefaults.standard.double(forKey: "range")
+    rangeTextField.text = "\(range)"
   }
   
   func setupRightBarButtonItem() {
