@@ -104,6 +104,7 @@ extension SearchViewController: UISearchBarDelegate {
 
 private extension SearchViewController {
   @objc func showSettingsVC() {
-    
+    let settingsVC = SettingsViewController()
+    navigationController?.pushViewController(settingsVC, animated: true)
   }
 }
