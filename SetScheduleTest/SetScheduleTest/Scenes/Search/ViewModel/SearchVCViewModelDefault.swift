@@ -20,7 +20,9 @@ class SearchVCViewModelDefault: SearchControllerViewModel {
   
   private var keyword: String?
   
-  private var range: Double = 0
+  private var range: Double {
+    UserDefaults.standard.double(forKey: "range")
+  }
   
   private let locationService: LocationService
   
@@ -38,11 +40,10 @@ class SearchVCViewModelDefault: SearchControllerViewModel {
     }
   }
   
-  func searchEvent(with keyword: String, range: Double) {
+  func searchEvent(with keyword: String) {
     timer?.invalidate()
     
     self.keyword = keyword
-    self.range = range
     
     timer = Timer.scheduledTimer(
       timeInterval: 1,

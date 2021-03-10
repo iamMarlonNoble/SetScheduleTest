@@ -96,7 +96,7 @@ extension SearchViewController {
 
 extension SearchViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    viewModel.searchEvent(with: searchBar.text ?? "", range: 10000)
+    viewModel.searchEvent(with: searchBar.text ?? "")
   }
 }
 
