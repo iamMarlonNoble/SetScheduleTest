@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     window?.makeKeyAndVisible()
     
-    let initialVC = SearchViewController(SearchVCViewModelDefault(eventService: PredictHQEventService()))
+    let initialVC = SearchViewController(SearchVCViewModelDefault())
     
     let nav = UINavigationController(rootViewController: initialVC)
     

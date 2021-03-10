@@ -14,7 +14,17 @@ class SearchVCViewModelDefault: SearchControllerViewModel {
   
   var didUpdateEvents: (() -> Void)?
   
-  private let eventService: EventService
+  private var eventService: EventService {
+    let int = UserDefaults.standard.integer(forKey: "host")
+    let host = Host(rawValue: int) ?? .seatGeek
+    
+    switch host {
+    case .seatGeek:
+      return SeatGeekEventService()
+    case .predictHQ:
+      return PredictHQEventService()
+    }
+  }
   
   private var timer: Timer?
   
@@ -29,10 +39,8 @@ class SearchVCViewModelDefault: SearchControllerViewModel {
   private var coordinates: CLLocationCoordinate2D = .init(latitude: 0, longitude: 0)
   
   init(
-    eventService: EventService = SeatGeekEventService(),
     locationService: LocationService = LocationServiceDefault()
   ) {
-    self.eventService = eventService
     self.locationService = locationService
     
     locationService.didUpdateLocation = { [weak self] coordinates in
