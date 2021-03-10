@@ -15,9 +15,6 @@ class SearchViewController: UITableViewController {
   
   private let cellId = "cellId"
   
-  // TODO: - Call this from UserDefaults
-  private var distance: Double = 10000
-  
   init(_ viewModel: SearchControllerViewModel) {
     self.viewModel = viewModel
     
