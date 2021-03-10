@@ -38,6 +38,8 @@ class SearchVCViewModelDefault: SearchControllerViewModel {
     locationService.didUpdateLocation = { [weak self] coordinates in
       self?.coordinates = coordinates
     }
+    
+    searchEvent(with: "")
   }
   
   func searchEvent(with keyword: String) {
