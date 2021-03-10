@@ -5,7 +5,7 @@
 //  Created by Marlon on 3/10/21.
 //
 
-import Foundation
+import SwiftDate
 
 struct SeatGeekResult: Decodable {
   let events: [SeatGeekEvent]
@@ -34,7 +34,7 @@ extension SeatGeekEvent: Event {
   }
   
   var date: String? {
-    sgDate
+    sgDate.toDate()?.toString(.dateTime(.short))
   }
   
   var venue: Venue? {
