@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     window?.makeKeyAndVisible()
     
-    let initialVC = SearchViewController(SearchControllerViewModelMock())
+    let initialVC = SearchViewController(SearchVCViewModelDefault())
     
     let nav = UINavigationController(rootViewController: initialVC)
     

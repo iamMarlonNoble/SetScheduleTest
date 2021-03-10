@@ -11,6 +11,7 @@ protocol SearchControllerViewModel: AnyObject {
   var isLoadingHandler: ((Bool) -> Void)? { get set }
   var eventCellViewModels: [EventCellViewModel] { get }
   var didUpdateEvents: (() -> Void)? { get set }
+  func searchEvent(with keyword: String, range: Double)
 }
 
 class SearchControllerViewModelMock: SearchControllerViewModel {
@@ -23,4 +24,8 @@ class SearchControllerViewModelMock: SearchControllerViewModel {
   ]
   
   var didUpdateEvents: (() -> Void)?
+  
+  func searchEvent(with keyword: String, range: Double) {
+    
+  }
 }

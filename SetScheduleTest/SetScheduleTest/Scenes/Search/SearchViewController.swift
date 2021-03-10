@@ -42,7 +42,9 @@ private extension SearchViewController {
   }
   
   func setupViewModel() {
-    
+    viewModel.didUpdateEvents = { [weak self] in
+      self?.tableView.reloadData()
+    }
   }
   
   private func setupSearchController() {
@@ -86,7 +88,7 @@ extension SearchViewController {
 
 extension SearchViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    
+    viewModel.searchEvent(with: searchBar.text ?? "", range: 10000)
   }
 }
 

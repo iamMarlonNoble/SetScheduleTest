@@ -32,3 +32,13 @@ class EventCellViewModelMock: EventCellViewModel {
   }
   
 }
+
+class EventCellViewModelDefault: EventCellViewModel {
+  var title: String = ""
+  
+  var sub1: String?
+  
+  var sub2: String?
+  
+  var sub3: String?
+}
