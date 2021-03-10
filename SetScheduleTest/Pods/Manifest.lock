@@ -1,16 +1,28 @@
 PODS:
+  - Eureka (5.3.2)
   - LBTATools (1.0.12)
+  - SVProgressHUD (2.2.5)
+  - SwiftDate (5.1.0)
 
 DEPENDENCIES:
+  - Eureka
   - LBTATools
+  - SVProgressHUD (~> 2.2.5)
+  - SwiftDate (~> 5.0)
 
 SPEC REPOS:
   trunk:
+    - Eureka
     - LBTATools
+    - SVProgressHUD
+    - SwiftDate
 
 SPEC CHECKSUMS:
+  Eureka: 1c2b8b5892bfb0e972d0fe05f8c09fd89f8625ec
   LBTATools: 389a901a01b9a56bea5682c40cd6e23530f40015
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
 
-PODFILE CHECKSUM: b5cc7c0adc66e3b9393c0cdd0c5b1ae0ed4c1f0f
+PODFILE CHECKSUM: b4a502b6d54c900011bcd1716358eabd21c816bc
 
 COCOAPODS: 1.10.1
