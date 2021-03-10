@@ -53,4 +53,10 @@ struct SeatGeekVenue: Venue {
   var address: String {
     sgAddress ?? ""
   }
+  
+  private enum CodingKeys: String, CodingKey {
+    case
+      name,
+      sgAddress = "address"
+  }
 }
