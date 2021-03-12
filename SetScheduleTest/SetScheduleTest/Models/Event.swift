@@ -10,6 +10,7 @@ import Foundation
 protocol Event: Decodable {
   var title: String { get }
   var category: String { get }
+  var description: String? { get }
   var date: String? { get }
   var venue: Venue? { get }
   var url: URL? { get }

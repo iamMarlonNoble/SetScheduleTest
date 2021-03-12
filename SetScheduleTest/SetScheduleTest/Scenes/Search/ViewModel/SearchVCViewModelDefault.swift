@@ -8,13 +8,37 @@
 import CoreLocation
 
 class SearchVCViewModelDefault: SearchControllerViewModel {
+  var detailsVCViewModels: [DetailsControllerViewModel] = []
+  
   var isLoadingHandler: ((Bool) -> Void)?
   
   var eventCellViewModels: [EventCellViewModel] = []
   
   var didUpdateEvents: (() -> Void)?
   
-  private let eventService: EventService
+  private var eventService: EventService {
+    switch host {
+    case .seatGeek:
+      return SeatGeekEventService()
+    case .predictHQ:
+      return PredictHQEventService()
+    }
+  }
+  
+  private var host: Host {
+    let int = UserDefaults.standard.integer(forKey: "host")
+    let host = Host(rawValue: int) ?? .seatGeek
+    return host
+  }
+  
+  var title: String {
+    switch host {
+    case .seatGeek:
+      return "SeatGeek"
+    case .predictHQ:
+      return "PredictHQ"
+    }
+  }
   
   private var timer: Timer?
   
@@ -29,11 +53,11 @@ class SearchVCViewModelDefault: SearchControllerViewModel {
   private var coordinates: CLLocationCoordinate2D = .init(latitude: 0, longitude: 0)
   
   init(
-    eventService: EventService = SeatGeekEventService(),
     locationService: LocationService = LocationServiceDefault()
   ) {
-    self.eventService = eventService
     self.locationService = locationService
+    
+    print(host)
     
     locationService.didUpdateLocation = { [weak self] coordinates in
       self?.coordinates = coordinates
@@ -77,12 +101,23 @@ private extension SearchVCViewModelDefault {
       let vm = EventCellViewModelDefault()
       vm.title = event.title
       vm.sub1 = "Category: \(event.category)"
-      vm.sub2 = "Venue: \(event.venue?.name ?? "") - \(event.venue?.address ?? "")"
+      
+      if let venue = event.venue {
+        vm.sub2 = "Venue: \(venue.name) - \(venue.address)"
+      } else {
+        vm.sub2 = "Venue: (Not Provided)"
+      }
+      
       vm.sub3 = "Date: \(event.date ?? "")"
+      
+      vm.url = event.url
       
       return vm
     }
     
+    detailsVCViewModels = events.map({ DetailsVCViewModel(event: $0) })
+    
     didUpdateEvents?()
   }
+  
 }

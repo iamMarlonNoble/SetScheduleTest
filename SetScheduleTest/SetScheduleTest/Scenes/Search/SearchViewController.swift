@@ -15,9 +15,6 @@ class SearchViewController: UITableViewController {
   
   private let cellId = "cellId"
   
-  // TODO: - Call this from UserDefaults
-  private var distance: Double = 10000
-  
   init(_ viewModel: SearchControllerViewModel) {
     self.viewModel = viewModel
     
@@ -27,6 +24,12 @@ class SearchViewController: UITableViewController {
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    title = viewModel.title
   }
   
 }
@@ -88,7 +91,14 @@ extension SearchViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // Handle event URL
+    if let url = viewModel.eventCellViewModels[indexPath.row].url {
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    } else {
+      let detailsVCViewModel = viewModel.detailsVCViewModels[indexPath.row]
+      let detailsViewController = DetailsViewController(viewModel: detailsVCViewModel)
+      navigationController?.pushViewController(detailsViewController, animated: true)
+      
+    }
   }
 }
 
