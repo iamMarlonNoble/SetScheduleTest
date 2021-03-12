@@ -26,6 +26,12 @@ class SearchViewController: UITableViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    title = viewModel.title
+  }
+  
 }
 
 // MARK: - Setup
@@ -85,7 +91,14 @@ extension SearchViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // Handle event URL
+    if let url = viewModel.eventCellViewModels[indexPath.row].url {
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    } else {
+      let detailsVCViewModel = viewModel.detailsVCViewModels[indexPath.row]
+      let detailsViewController = DetailsViewController(viewModel: detailsVCViewModel)
+      navigationController?.pushViewController(detailsViewController, animated: true)
+      
+    }
   }
 }
 

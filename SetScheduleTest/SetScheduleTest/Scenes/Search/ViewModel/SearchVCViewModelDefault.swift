@@ -8,6 +8,8 @@
 import CoreLocation
 
 class SearchVCViewModelDefault: SearchControllerViewModel {
+  var detailsVCViewModels: [DetailsControllerViewModel] = []
+  
   var isLoadingHandler: ((Bool) -> Void)?
   
   var eventCellViewModels: [EventCellViewModel] = []
@@ -15,14 +17,26 @@ class SearchVCViewModelDefault: SearchControllerViewModel {
   var didUpdateEvents: (() -> Void)?
   
   private var eventService: EventService {
-    let int = UserDefaults.standard.integer(forKey: "host")
-    let host = Host(rawValue: int) ?? .seatGeek
-    
     switch host {
     case .seatGeek:
       return SeatGeekEventService()
     case .predictHQ:
       return PredictHQEventService()
+    }
+  }
+  
+  private var host: Host {
+    let int = UserDefaults.standard.integer(forKey: "host")
+    let host = Host(rawValue: int) ?? .seatGeek
+    return host
+  }
+  
+  var title: String {
+    switch host {
+    case .seatGeek:
+      return "SeatGeek"
+    case .predictHQ:
+      return "PredictHQ"
     }
   }
   
@@ -42,6 +56,8 @@ class SearchVCViewModelDefault: SearchControllerViewModel {
     locationService: LocationService = LocationServiceDefault()
   ) {
     self.locationService = locationService
+    
+    print(host)
     
     locationService.didUpdateLocation = { [weak self] coordinates in
       self?.coordinates = coordinates
@@ -94,9 +110,14 @@ private extension SearchVCViewModelDefault {
       
       vm.sub3 = "Date: \(event.date ?? "")"
       
+      vm.url = event.url
+      
       return vm
     }
     
+    detailsVCViewModels = events.map({ DetailsVCViewModel(event: $0) })
+    
     didUpdateEvents?()
   }
+  
 }

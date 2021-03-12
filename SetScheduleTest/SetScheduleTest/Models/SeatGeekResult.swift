@@ -14,6 +14,7 @@ struct SeatGeekResult: Decodable {
 struct SeatGeekEvent {
   let title: String
   let type: String
+  let sgDescription: String?
   let sgVenue: SeatGeekVenue
   let sgDate: String
   let sgUrl: String
@@ -22,6 +23,7 @@ struct SeatGeekEvent {
     case
       title,
       type,
+      sgDescription = "description",
       sgVenue = "venue",
       sgDate = "datetime_utc",
       sgUrl = "url"
@@ -31,6 +33,10 @@ struct SeatGeekEvent {
 extension SeatGeekEvent: Event {
   var category: String {
     type.replacingOccurrences(of: "_", with: " ").capitalized
+  }
+  
+  var description: String? {
+    sgDescription
   }
   
   var date: String? {

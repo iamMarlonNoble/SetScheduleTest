@@ -12,9 +12,11 @@ protocol EventCellViewModel: AnyObject {
   var sub1: String? { get }
   var sub2: String? { get }
   var sub3: String? { get }
+  var url: URL? { get }
 }
 
 class EventCellViewModelMock: EventCellViewModel {
+  var url: URL?
   
   var title: String
   
@@ -34,6 +36,8 @@ class EventCellViewModelMock: EventCellViewModel {
 }
 
 class EventCellViewModelDefault: EventCellViewModel {
+  var url: URL?
+  
   var title: String = ""
   
   var sub1: String?

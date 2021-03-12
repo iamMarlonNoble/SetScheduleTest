@@ -138,6 +138,7 @@ private extension SettingsViewController {
   func saveHandler() {
     if let range = rangeTextField.text, let doubleRange = Double(range) {
       UserDefaults.standard.setValue(doubleRange, forKey: "range")
+      UserDefaults.standard.integer(forKey: "host")
     }
     
     UserDefaults.standard.setValue(hostSegmentedControl.selectedSegmentIndex, forKey: "host")

@@ -13,13 +13,26 @@ struct PredictHQResult: Decodable {
 
 struct PredictHQEvent {
   let title: String
-  let category: String
+  let predictCategory: String
   let start: String
   let entities: [PredictEntity]
+  let description: String?
   
+  private enum CodingKeys: String, CodingKey {
+    case title,
+         predictCategory = "category",
+         start,
+         entities,
+         description
+  }
 }
 
 extension PredictHQEvent: Event {
+  
+  var category: String {
+    predictCategory.capitalized
+  }
+  
   var date: String? {
     start.toDate()?.toString(.dateTime(.short))
   }
